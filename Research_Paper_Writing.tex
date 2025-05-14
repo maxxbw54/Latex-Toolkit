@@ -16,3 +16,36 @@
 \newcommand{\eg}[0]{e.g.,}
 
 
+%%%%%%%%%%QUOTE%%%%%%%%%%
+\usepackage{changepage}
+\usepackage{framed}
+% pretty bars
+\newcommand{\sbar}[1]{{\color{darkgray}\rule{\dimexpr 0.6cm * #1 / 100}{5pt}\color{lightgray}\rule{\dimexpr 0.6cm * (100 - #1) / 100}{5pt}}}
+\makeatletter
+\renewenvironment{framed}{%
+\def\FrameCommand##1{\hskip\@totalleftmargin \fboxsep=\FrameSep\fbox{##1} \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+\MakeFramed
+{\advance\hsize-\width \@totalleftmargin\z@ \linewidth\hsize \@setminipage}}%
+{\par\unskip\endMakeFramed}
+\makeatother
+\definecolor{formalshade}{HTML}{F9E3DF}
+\newcommand{\gray}{\cellcolor{lightgray}}
+\definecolor{darkblue}{rgb}{0.2, 0.2, 0.2}
+
+\newenvironment{formal}{%
+\vspace{-5pt}
+\def\FrameCommand{%
+\vspace{-10pt} \hspace{1pt}%
+{\color{darkblue}\vrule width 2pt}%
+{\color{formalshade}\vrule width 4pt}%
+\colorbox{formalshade}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent
+\hspace{-1pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%%\vspace{2pt}%
+
+}{%
+\vspace{0pt}
+\end{adjustwidth}\endMakeFramed%
+}
