@@ -1,0 +1,218 @@
+\documentclass[10pt]{book}
+\usepackage[margin=0.5in]{geometry} % for PAPER & MARGIN
+\usepackage[many]{tcolorbox}    	% for COLORED BOXES (tikz and xcolor included)
+\usepackage{mathspec} 			    % for FONTS
+\usepackage{setspace}               % for LINE SPACING
+\usepackage{multicol}               % for MULTICOLUMNS
+
+\setmainfont{Noto Sans}[
+    Kerning = On,
+    Mapping = tex-text,
+    Numbers = Uppercase, 
+    BoldFont = Noto Sans SemiBold
+]                           % setting the font as Noto Sans
+\setlength\parindent{0pt}   % killing indentation for all the text
+\setstretch{1.3}            % setting line spacing to 1.3
+\setlength\columnsep{0.25in} % setting length of column separator
+\pagestyle{empty}           % setting pagestyle to be empty
+
+
+\definecolor{main}{HTML}{5989cf}    % setting main color to be used
+\definecolor{sub}{HTML}{cde4ff}     % setting sub color to be used
+
+\tcbset{
+    sharp corners,
+    colback = white,
+    before skip = 0.2cm,    % add extra space before the box
+    after skip = 0.5cm      % add extra space after the box
+}                           % setting global options for tcolorbox
+
+% You can copy any following box you like to your code.
+\newtcolorbox{boxA}{
+    fontupper = \bf,
+    boxrule = 1.5pt,
+    colframe = black % frame color
+}
+
+\newtcolorbox{boxB}{
+    fontupper = \bf\color{main}, % font color
+    boxrule = 1.5pt,
+    colframe = main,
+    rounded corners,
+    arc = 5pt   % corners roundness
+}
+
+\newtcolorbox{boxC}{
+    colback = sub, % background color
+    boxrule = 0pt  % no borders
+}
+
+\newtcolorbox{boxD}{
+    colback = sub, 
+    colframe = main, 
+    boxrule = 0pt, 
+    toprule = 3pt, % top rule weight
+    bottomrule = 3pt % bottom rule weight
+}
+
+\newtcolorbox{boxE}{
+    enhanced, % for a fancier setting,
+    boxrule = 0pt, % clearing the default rule
+    borderline = {0.75pt}{0pt}{main}, % outer line
+    borderline = {0.75pt}{2pt}{sub} % inner line
+}
+
+\newtcolorbox{boxF}{
+    colback = sub,
+    enhanced,
+    boxrule = 1.5pt, 
+    colframe = white, % making the base for dash line
+    borderline = {1.5pt}{0pt}{main, dashed} % add "dashed" for dashed line
+}
+
+\newtcolorbox{boxG}{
+    enhanced,
+    boxrule = 0pt,
+    colback = sub,
+    borderline west = {1pt}{0pt}{main}, 
+    borderline west = {0.75pt}{2pt}{main}, 
+    borderline east = {1pt}{0pt}{main}, 
+    borderline east = {0.75pt}{2pt}{main}
+}
+
+\newtcolorbox{boxH}{
+    colback = sub, 
+    colframe = main, 
+    boxrule = 0pt, 
+    leftrule = 6pt % left rule weight
+}
+
+\newtcolorbox{boxI}{
+    colback = sub, 
+    colframe = main, 
+    boxrule = 0pt, 
+    toprule = 6pt % top rule weight
+}
+
+\newtcolorbox{boxJ}{
+    sharpish corners, % better drop shadow
+    colback = sub, 
+    colframe = main, 
+    boxrule = 0pt, 
+    toprule = 4.5pt, % top rule weight
+    enhanced,
+    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35} % {xshift}{yshift}{offset}{step}{options} 
+}
+
+\newtcolorbox{boxK}{
+    sharpish corners, % better drop shadow
+    boxrule = 0pt,
+    toprule = 4.5pt, % top rule weight
+    enhanced,
+    fuzzy shadow = {0pt}{-2pt}{-0.5pt}{0.5pt}{black!35} % {xshift}{yshift}{offset}{step}{options} 
+}
+
+\newtcolorbox{boxL}{
+    fontupper = \color{main},
+    rounded corners,
+    arc = 6pt,
+    colback = sub, 
+    colframe = main!50, 
+    boxrule = 0pt, 
+    bottomrule = 4.5pt 
+}
+
+\newtcolorbox{boxM}{
+    fontupper = \color{white},
+    rounded corners,
+    arc = 6pt,
+    colback = main!80, 
+    colframe = main, 
+    boxrule = 0pt, 
+    bottomrule = 4.5pt,
+    enhanced,
+    fuzzy shadow = {0pt}{-3pt}{-0.5pt}{0.5pt}{black!35}
+}
+
+\begin{document}
+{\LARGE Simple Box} % inspired by https://saruwakakun.com/html-css/reference/box
+\begin{multicols}{2}
+A. Just enclose with a solid line.
+
+\begin{boxA}
+It is just a frame surrounded by a slightly thick line. A simple monochrome design might be fine, but when you want a gorgeous look, it's a bit unsatisfactory.
+\end{boxA}
+
+B. Rounded Corner
+
+\begin{boxB}
+We changed the color and made the corners round. Change the text color, line color, and roundness of the corners as necessary.
+\end{boxB}
+
+C. Background Fill
+
+\begin{boxC}
+I tried to fill the background without using lines. Please change the background color to your liking.
+\end{boxC}
+
+D. Only Top and Bottom Line
+
+\begin{boxD}
+In addition to filling, I added thicker lines to the top and bottom. It is important to choose a color that is compatible with the lines and background.
+\end{boxD}
+
+E. Double Line Border
+
+\begin{boxE}
+A double-lined frame. You can create it by specifying multiple "borderline". The last argument in \texttt{borderline} is essentially work the same as \texttt{tikz} options.
+\end{boxE}
+
+F. Dashed Box
+
+\begin{boxF}
+I made the surrounding frame a broken line. Change the line thickness to your liking (just adjust the first argument in \texttt{borderline}).
+\end{boxF}
+
+G. Left and Right Double Line
+
+\begin{boxG}
+I tried adding a double line only to the left and right. We recommend changing the color according to your document design.
+\end{boxG}
+
+H. Thick Line Only to the left
+
+\begin{boxH}
+It is a sticky note box design. You may use it to write important points or supplementary notes in the article.
+\end{boxH}
+
+I. Thick line only on top
+
+\begin{boxI}
+This is the case when I added a line only to the top. The point is to put together the background and line/character colors in the same system color overall.
+\end{boxI}
+
+J. If You Cast a Shadow...
+
+\begin{boxJ}
+It looks like a little floating with a shadow. Although it has a mint color scheme, the background may be white or gray.
+\end{boxJ}
+
+K. Smart Design
+
+\begin{boxK}
+The box area is made visible by the shadow instead of the border. The top line may be placed on the left (replace border-top with border-left).
+\end{boxK}
+
+L. Thick Board Style
+
+\begin{boxL}
+The underline is slightly darker than the background to express the thickness. The neck is that it looks a little like a button.
+\end{boxL}
+
+M. Thick Board with Shadow
+
+\begin{boxM}
+I added a shadow to give it a more three-dimensional appearance. It's a little flashy, so it might be good to use it on the part you really want to stand out.
+\end{boxM}
+\end{multicols}
+\end{document}
